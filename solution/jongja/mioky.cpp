@@ -19,7 +19,7 @@ int DFS(int core_count, int total) {
 		}
 		int temp_dx = core_x[core_count];
 		int temp_dy = core_y[core_count];
-		int line_count = 0;
+		int line_count = 0; 
 		for (int i = 0; i < 4; i++) {
 			while (true) {	
 				if (map[temp_dy+dy[i]][temp_dx+dx[i]] != 0) {
