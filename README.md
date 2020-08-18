@@ -29,6 +29,7 @@ BOJ_12532_jongja.cpp
 [oyk4017](https://github.com/oyk4017)  
 [mioky](https://github.com/mioky)  
 [KIMSOOJIN97](https://github.com/KIMSOOJIN97)  
+[JONGJA](https://github.com/jongja)
 
 # Meeting
 
