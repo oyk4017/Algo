@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <queue>
 
 #define MAX 8
 
@@ -13,20 +12,20 @@ struct pos{
 int N,M;
 int map[MAX][MAX];
 
+int virus_x[64]={0,};
+int virus_y[64]={0,};
+int virus=0;
+
 int dx[4] = {-1,0,1,0};
 int dy[4] = {0,1,0,-1};
 
 int MAX_AREA = 0;
-int visited[64]={0,};
 
-vector <pos> virus;
 vector <pos> empty;
 
-/// 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.
-//0은 빈 칸, 1은 벽, 2는 바이러스가 있는 곳이다
+
 int BFS()
 {
-    queue <pos> q;
     
     int visited[MAX][MAX];
     int x,y;
@@ -36,27 +35,25 @@ int BFS()
             visited[i][j] = map[i][j];
     }
     
-    for(int i=0;i<virus.size();i++){
 
-        q.push({virus[i].x,virus[i].y});
-        
-        while(!q.empty()){
-            x = q.front().x;
-            y = q.front().y;
-            q.pop();
+    int tmp_vir = virus;
+    
+    for(int i=0;i<tmp_vir;i++){
+        x = virus_x[i];
+        y = virus_y[i];
+        for(int k=0;k<4;k++){
             
-            for(int k=0;k<4;k++){
+            int nx = x+dx[k];
+            int ny = y+dy[k];
                 
-                int nx = x+dx[k];
-                int ny = y+dy[k];
-                
-                if(nx < 0 || ny <0 || nx >= N || ny >= M )   continue;
-                if( visited[nx][ny] != 0)   continue;
-                q.push({nx,ny});
-                visited[nx][ny] = -1;
-            }
+            if(nx < 0 || ny <0 || nx >= N || ny >= M || visited[nx][ny] != 0)   continue;
+            visited[nx][ny] = -1;
+            virus_x[tmp_vir]=nx;
+            virus_y[tmp_vir]=ny;
+            tmp_vir++;
         }
     }
+    
     
     int cnt =0;
     for(int i=0;i<N;i++){
@@ -69,48 +66,55 @@ int BFS()
     
 }
 
-void wall(void )
-{
-    
-    int size = empty.size();
-    
-    for(int i=0;i<size-2;i++){
-        for(int j=i+1;j<size-1;j++){
-            for(int k=j+1;k<size;k++){
-                
-                map[empty[i].x][empty[i].y] = 1;
-                map[empty[j].x][empty[j].y] = 1;
-                map[empty[k].x][empty[k].y] = 1;
-                
-                int cnt = BFS();
-                if( MAX_AREA < cnt) MAX_AREA = cnt;
-
-                map[empty[i].x][empty[i].y] = 0;
-                map[empty[j].x][empty[j].y] = 0;
-                map[empty[k].x][empty[k].y] = 0;
-            }
-        }
-    }
-}
-
-
 int main(void)
 {
-    
+
     cin >> N >> M;
     for(int i=0;i<N;i++){
         for(int j=0;j<M;j++){
             cin >> map[i][j];
             
-            if(map[i][j] == 2)  virus.push_back({i,j});
+            if(map[i][j] == 2) {
+                virus_x[virus] = i;
+                virus_y[virus] = j;
+                virus++;
+            }
             else if(map[i][j]==0)   empty.push_back({i,j});
         }
     }
     
-    wall();
+    int size = empty.size();
+    
+    
+    for(int i=0;i<size-2;i++){
+        for(int j=i+1;j<size-1;j++){
+            for(int k=j+1;k<size;k++){
+                
+                int x1= empty[i].x;
+                int y1 = empty[i].y;
+                
+                int x2= empty[j].x;
+                int y2 = empty[j].y;
+                
+                int x3= empty[k].x;
+                int y3 = empty[k].y;
+
+                map[x1][y1] = 1;
+                map[x2][y2] = 1;
+                map[x3][y3] = 1;
+                
+                int cnt = BFS();
+                if( MAX_AREA < cnt) MAX_AREA = cnt;
+
+                map[x1][y1] = 0;
+                map[x2][y2] = 0;
+                map[x3][y3] = 0;
+            }
+        }
+    }
     
     cout << MAX_AREA;
-    
+
     return 0;
     
 }
