@@ -17,8 +17,10 @@ int dx[4] = {-1,0,1,0};
 int dy[4] = {0,1,0,-1};
 
 int MAX_AREA = 0;
+int visited[64]={0,};
 
 vector <pos> virus;
+vector <pos> empty;
 
 /// 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.
 //0은 빈 칸, 1은 벽, 2는 바이러스가 있는 곳이다
@@ -66,7 +68,7 @@ int BFS()
     return cnt;
     
 }
-void DFS(int cnt)
+void DFS(int cnt,int idx )
 {
     if(cnt == 3){
         
@@ -75,15 +77,12 @@ void DFS(int cnt)
         return ;
     }
     
-    for(int i=0;i<N;i++){
-        for(int j=0;j<M;j++){
-            if(map[i][j]==0)
-            {
-                map[i][j]=1;
-                DFS(cnt+1);
-                map[i][j]=0;
-            }
-        }
+    for(int i=idx;i<empty.size();i++){
+        visited[i] = 1;
+        map[empty[i].x][empty[i].y]=1;
+        DFS(cnt+1, i+1);
+        map[empty[i].x][empty[i].y]=0;
+        
     }
 }
 
@@ -97,10 +96,11 @@ int main(void)
             cin >> map[i][j];
             
             if(map[i][j] == 2)  virus.push_back({i,j});
+            else if(map[i][j]==0)   empty.push_back({i,j});
         }
     }
     
-    DFS(0);
+    DFS(0,0);
     
     cout << MAX_AREA;
     
