@@ -68,21 +68,28 @@ int BFS()
     return cnt;
     
 }
-void DFS(int cnt,int idx )
+
+void wall(void )
 {
-    if(cnt == 3){
-        
-        int cnt = BFS();
-        if( MAX_AREA < cnt) MAX_AREA = cnt;
-        return ;
-    }
     
-    for(int i=idx;i<empty.size();i++){
-        visited[i] = 1;
-        map[empty[i].x][empty[i].y]=1;
-        DFS(cnt+1, i+1);
-        map[empty[i].x][empty[i].y]=0;
-        
+    int size = empty.size();
+    
+    for(int i=0;i<size-2;i++){
+        for(int j=i+1;j<size-1;j++){
+            for(int k=j+1;k<size;k++){
+                
+                map[empty[i].x][empty[i].y] = 1;
+                map[empty[j].x][empty[j].y] = 1;
+                map[empty[k].x][empty[k].y] = 1;
+                
+                int cnt = BFS();
+                if( MAX_AREA < cnt) MAX_AREA = cnt;
+
+                map[empty[i].x][empty[i].y] = 0;
+                map[empty[j].x][empty[j].y] = 0;
+                map[empty[k].x][empty[k].y] = 0;
+            }
+        }
     }
 }
 
@@ -100,7 +107,7 @@ int main(void)
         }
     }
     
-    DFS(0,0);
+    wall();
     
     cout << MAX_AREA;
     
