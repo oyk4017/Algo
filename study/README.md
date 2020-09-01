@@ -12,8 +12,8 @@
 ### OOP
 
 ### Algorithms
-* [Quick Sort](./Algorithm/Sort/QuickSort.md)
-* [Merge Sort](./Algorithm/Sort/MergeSort.md)
+* [Quick Sort](./Algorithm/Sorts/QuickSort.md)
+* [Merge Sort](./Algorithm/Sorts/MergeSort.md)
 * Union, Find
 * Heap
 * Hash
