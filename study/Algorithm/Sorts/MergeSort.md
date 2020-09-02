@@ -47,11 +47,11 @@ Merge sort는 quick sort와 마찬가지로 재귀로 구현이 된다. 하지�
 
 # Compare with Quick sort
 
-Quick sort와 Merge sort를 두고 비교했을 때 빠른 것은 사실 quick sort라고 할 수 있다. 그에 대한 이유는 다음의 그림을 보면 알 수 있다.  
+[Quick sort](./QuickSort.md)와 Merge sort를 두고 비교했을 때 빠른 것은 사실 quick sort라고 할 수 있다. 그에 대한 이유는 다음의 그림을 보면 알 수 있다.  
   
 <p align="center"><img src="https://miro.medium.com/max/277/1*xwMnatBxMp59hn-s3yDkuw.gif"></p>
   
-먼저 merge sort는 다음과 같이 처음부터 끝까지 왓다갔다하면서 진행되는 모습을 볼 수 있다. 이는 process의 cache locality와  관련이 있게 되는데, 크기가 큰 배열을 처리할 때는 locality의 이점을 사용할 수 없게 된다.  
+먼저 merge sort는 다음과 같이 처음부터 끝까지 왓다갔다하면서 진행되는 모습을 볼 수 있다. 이는 processor의 cache locality와  관련이 있게 되는데, 크기가 큰 배열을 처리할 때는 locality의 이점을 사용할 수 없게 된다.  
   
 <p align="center"><img src="https://miro.medium.com/max/280/1*1OXQp3jbpyUJHYMX5rrJOQ.gif"></p>
   
