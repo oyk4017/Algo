@@ -47,7 +47,7 @@ for(int i = 0; i < UNION_SIZE; i++)
   
 ![union 3](./images/union_3.PNG)  
 
-Union과 Find의 time complexity는 **O(logN)**이다.
+Union과 Find의 time complexity는 **O(logN)** 이다.
 
 # Usage
 
