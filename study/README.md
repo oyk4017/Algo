@@ -14,6 +14,6 @@
 ### Algorithms
 * [Quick Sort](./Algorithm/Sorts/QuickSort.md)
 * [Merge Sort](./Algorithm/Sorts/MergeSort.md)
-* Union, Find
+* [Disjoint Set](./Algorithm/DisjointSet/DisjointSet.md)
 * Heap
 * Hash
