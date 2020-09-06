@@ -8,8 +8,11 @@
 * [User/Kernel mode](./User_Kernel_mode/README.md)
 
 ### Network
+* [OSI, TCP/UDP](./OSI+TCP+UDP/README.md)
 
 ### OOP
+* [Object Oriented Programming](./oop/README.md)
+* [JVM, DVM, ART](./JVM,DVM,ART/README.md)
 
 ### Algorithms
 * [Quick Sort](./Algorithm/Sorts/QuickSort.md)
