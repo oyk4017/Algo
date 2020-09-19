@@ -9,11 +9,12 @@
 
 ### Network
 * [OSI, TCP/UDP](./OSI+TCP+UDP/README.md)
+* [HTTP, HTTPS](./HTTP_HTTPS/README.md)
 
 ### OOP
 * [Object Oriented Programming](./oop/README.md)
 * [JVM, DVM, ART](./JVM,DVM,ART/README.md)
-
+* [UML](./UML/README.md)
 ### Algorithms
 * [Quick Sort](./Algorithm/Sorts/QuickSort.md)
 * [Merge Sort](./Algorithm/Sorts/MergeSort.md)
